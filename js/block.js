@@ -510,13 +510,18 @@ export function getBlockMarkup(
 ): string {
   const blockHtml = [];
   if (isAtomicEntityBlock(block)) {
-    blockHtml.push(
-      getEntityMarkup(
-        entityMap,
-        block.entityRanges[0].key,
-        undefined,
-        customEntityTransform,
-      ));
+    try {
+      blockHtml.push(
+        getEntityMarkup(
+          entityMap,
+          block.entityRanges[0].key,
+          undefined,
+          customEntityTransform,
+        ));
+    }
+    catch (e) {
+      console.error("Error when parsing atomic block ", block.key, " Text: ", block.text);
+    }
   } else {
     const blockTag = getBlockTag(block.type);
     if (blockTag) {
