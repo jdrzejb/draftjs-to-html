@@ -520,7 +520,8 @@ export function getBlockMarkup(
         ));
     }
     catch (e) {
-      console.error("Error when parsing atomic block ", block.key, " Text: ", block.text);
+      console.error("Error when trying to parse atomic block", block.key, "Text: ", block.text);
+      console.error("To fix this, remove affected blocks and add them again without copying and pasting.")
     }
   } else {
     const blockTag = getBlockTag(block.type);
