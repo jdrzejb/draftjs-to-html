@@ -269,7 +269,7 @@ function getSectionText(text: Array<string>): string {
     const chars = text.map((ch) => {
       switch (ch) {
         case '\n':
-          return '<br>';
+          return '';
         case '&':
           return '&amp;';
         case '<':
